@@ -77,7 +77,7 @@ def generate_token():
         token = sha256(json.dumps(did,sort_keys=True).encode('utf8')).hexdigest()
         
         try:
-            requests.post('exam-.majyx.net/result', {
+            res = requests.post('https://exam-52b734e98f641.majyx.net/result', json={
                 'token': token,
                 'data': did
             })
