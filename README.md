@@ -42,7 +42,7 @@ L'application doit pouvoir accéder à l'API Docker via le fichier `.sock`.
 ./manage.py migrate
 ```
 
-## Lancement
+## Lancement en local
 
 ```bash
 ./manage.py runserver 127.0.0.1:8000
