@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.contrib.auth.models import User
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 from hashlib import sha256
 import json
 
@@ -13,7 +17,7 @@ import requests
 # Create your views here.
 def index(request):
     if not test_db() or not test_redis() or not test_docker():
-        return HttpResponse(status=500, content="Server error")
+        return HttpResponse(status=500, content="L'application est mal configure")
     context = {
         'token': generate_token()
     }
@@ -24,7 +28,8 @@ def test_db():
     try:
         users = User.objects.all()
         success = True
-    except:
+    except Exception as ex:
+        logger.critical(str(ex))
         success = False
     finally:
         return success
@@ -37,7 +42,8 @@ def test_redis():
         r.set('foo', 'bar')
         value = r.get('foo')
         success = True
-    except:
+    except Exception as ex:
+        logger.critical(str(ex))
         success = False
     finally:
         return success
@@ -49,7 +55,8 @@ def test_docker():
         d = docker.from_env()
         info = d.info()
         success = True
-    except:
+    except Exception as ex:
+        logger.critical(str(ex))
         success = False
     finally:
         return success
@@ -86,4 +93,4 @@ def generate_token():
         
         return token
     except:
-        return "ERROR"
+        return "ERREUR! Essaye encore!"
