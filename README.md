@@ -1,8 +1,8 @@
 # Test App
 
-Voici un application **Django** pour tester vos compétences sur Docker.
+Voici une application **Django** pour tester vos compétences sur Docker.
 
-Essayer d'utiliser la fonctionnalité disponible de Docker afin de pouvoir lancer l'application en une seule commande (app, db, ...).
+Essayez d'utiliser la fonctionnalité disponible de Docker afin de pouvoir lancer l'application en une seule commande (app, db, ...).
 
 Et cela, de la façon la plus sécurisé possible!
 
