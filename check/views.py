@@ -29,7 +29,7 @@ def test_db():
         users = User.objects.all()
         success = True
     except Exception as ex:
-        logger.critical(str(ex))
+        logger.critical(f"Error on DB:\n{str(ex)}")
         success = False
     finally:
         return success
@@ -43,7 +43,7 @@ def test_redis():
         value = r.get('foo')
         success = True
     except Exception as ex:
-        logger.critical(str(ex))
+        logger.critical(f"Error on Redis:\n{str(ex)}")
         success = False
     finally:
         return success
@@ -56,7 +56,7 @@ def test_docker():
         info = d.info()
         success = True
     except Exception as ex:
-        logger.critical(str(ex))
+        logger.critical(f"Error on Docker: {str(ex)}")
         success = False
     finally:
         return success
